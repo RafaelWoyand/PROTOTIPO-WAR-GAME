@@ -1,0 +1,45 @@
+/* style.css — mesa de operações: lona, papel de mapa e estêncil militar */
+:root{--lona:#2b2f20;--painel:#383d29;--mapa-c:#d9cfa8;--mapa-e:#8a8458;--aliado:#566b3a;--eixo:#555b63;--alerta:#b3382c;--ouro:#e0c46a;--txt:#ece6cf}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;background:var(--lona) repeating-linear-gradient(45deg,#0000 0 6px,#0000000d 6px 7px);color:var(--txt);font-family:"Courier New",Courier,monospace}
+header{text-align:center;padding:14px 8px 4px}
+h1{margin:0;font:900 clamp(26px,5vw,44px) Impact,"Arial Black",sans-serif;letter-spacing:.14em;color:var(--ouro);text-shadow:2px 2px #000}
+header p{margin:2px;opacity:.7}
+main{display:flex;flex-wrap:wrap;gap:16px;justify-content:center;align-items:flex-start;padding:12px}
+aside{display:flex;flex-direction:column;gap:12px}
+.panel{width:210px;background:var(--painel);border:2px solid #0006;border-left:8px solid var(--ouro);padding:10px 12px;transition:box-shadow .2s}
+.panel.aliados{border-left-color:var(--aliado)}.panel.eixo{border-left-color:var(--eixo)}
+.panel.active{box-shadow:0 0 0 2px var(--ouro),0 0 18px #e0c46a66}
+h2{margin:0 0 6px;font:700 17px Impact,sans-serif;letter-spacing:.06em}
+h3{margin:10px 0 2px;font-size:13px;opacity:.7;font-weight:400}
+.turn{min-height:1.3em;color:var(--ouro);font-weight:700}
+.cap{min-height:1.6em;font-size:20px;line-height:1.4}
+#hist{margin:0;padding:0;list-style:none;max-height:270px;overflow-y:auto;font-size:13px;line-height:1.6}
+#center{display:flex;flex-direction:column;align-items:center;gap:10px}
+#status{padding:8px 18px;background:#0005;border:2px solid var(--ouro);font:700 18px Impact,sans-serif;letter-spacing:.05em;min-width:300px;text-align:center}
+#status.check{background:var(--alerta);border-color:#fff}
+#status.over{background:var(--ouro);color:#222}
+#board{--u:min(10vw,7.6vh,62px);display:grid;grid-template-columns:22px repeat(8,var(--u)) 22px;grid-template-rows:22px repeat(8,var(--u)) 22px;background:#1d2016;padding:6px;border:3px solid #0008;box-shadow:0 8px 24px #000a}
+.lab{display:flex;align-items:center;justify-content:center;font-size:13px;color:var(--ouro)}
+.sq{position:relative;display:flex;align-items:center;justify-content:center;cursor:pointer}
+.sq.light{background:var(--mapa-c)}.sq.dark{background:var(--mapa-e)}
+.sq.last{box-shadow:inset 0 0 0 100px #e0c46a77}
+.sq.sel{outline:3px solid #fff;outline-offset:-3px;z-index:1}
+.sq.chk{background:radial-gradient(circle,#e0392b 30%,#0000 75%),var(--mapa-c)}
+.tgt::after{content:"";position:absolute;width:30%;height:30%;border-radius:50%;background:#1b3d1fb0;pointer-events:none}
+.tgt.cap::after{width:88%;height:88%;background:none;border:4px solid #b3382ccc}
+.unit{width:86%;height:86%;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;border:3px solid;box-shadow:0 2px 4px #0008;pointer-events:none}
+.unit.aliados{background:radial-gradient(#7d9455,var(--aliado));border-color:#f2ecd0;color:#fff}
+.unit.eixo{background:radial-gradient(#7a8089,var(--eixo));border:3px double #14161a;color:#fff}
+.ico{font-size:calc(var(--u) * .44);line-height:1}
+.cod{font:700 calc(var(--u) * .17) Impact,sans-serif;letter-spacing:.08em;margin-top:2px}
+.btns{display:flex;gap:10px;flex-wrap:wrap;justify-content:center}
+button{font:700 14px Impact,sans-serif;letter-spacing:.05em;padding:9px 16px;background:var(--aliado);color:#fff;border:2px solid #0008;cursor:pointer}
+button:hover:not(:disabled){background:#6b8648}button:disabled{opacity:.4;cursor:default}
+button:focus-visible,.sq:focus-visible{outline:3px solid var(--ouro)}
+#promo{position:fixed;inset:0;margin:auto;width:min(92vw,560px);height:max-content;background:var(--painel);border:3px solid var(--ouro);padding:16px;display:flex;flex-wrap:wrap;gap:10px;justify-content:center;z-index:9;box-shadow:0 0 0 100vmax #000a}
+#promo[hidden]{display:none}
+#promo p{width:100%;margin:0;text-align:center;font-weight:700}
+#promo button{display:flex;flex-direction:column;align-items:center;gap:4px;background:#0004;font:12px "Courier New",monospace}
+#promo .unit{--u:56px;width:56px;height:56px}
+.versao{width:100%;text-align:center;padding:6px 10px;background:#0005;border-top:2px solid var(--ouro);font-size:12px;color:#fff;bottom:0;left:0;right:0}

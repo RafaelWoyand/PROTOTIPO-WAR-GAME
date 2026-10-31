@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>WAR CHESS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header><h1>WAR CHESS</h1><p>Teatro europeu, 1939–1945</p></header>
+<main>
+  <section class="panel aliados" id="p-w">
+    <h2>Exército Aliado</h2><div class="turn"></div>
+    <h3>Baixas causadas</h3><div class="cap"></div>
+  </section>
+  <section id="center">
+    <div id="status"></div>
+    <div id="board"></div>
+    <div id="promo" hidden></div>
+    <div class="btns">
+      <button id="btn-undo">Voltar jogada</button>
+      <button id="btn-restart">Reiniciar partida</button>
+    </div>
+  </section>
+  <aside>
+    <section class="panel eixo" id="p-b">
+      <h2>Exército do Eixo</h2><div class="turn"></div>
+      <h3>Baixas causadas</h3><div class="cap"></div>
+    </section>
+    <section class="panel"><h2>Diário de operações</h2><ol id="hist"></ol></section>
+  </aside>
+</main>
+ <section class="versao">
+    <footer>
+      <p>Versão 0.1</p>
+    </footer>
+  </section>
+<script src="pieces.js"></script>
+<script src="game.js"></script>
+<script src="board.js"></script>
+<script src="interface.js"></script>
+<script>UI.init();</script>
+</body>
+</html>
